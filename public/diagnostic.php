@@ -1,49 +1,94 @@
 <?php
-// Script de diagnóstico e limpeza de cache
+// Diagnóstico Completo de Conexão MySQL
 
-echo "<h2>🔍 Diagnóstico SGP</h2>";
+echo "<h2>🔍 Diagnóstico Completo - SGP</h2>";
 
-// Limpar OPcache
+// Limpar cache
 if (function_exists('opcache_reset')) {
     opcache_reset();
-    echo "✅ Cache OPcache limpo!<br>";
-} else {
-    echo "ℹ️ OPcache não está ativo<br>";
+    echo "✅ Cache limpo<br><br>";
 }
 
-// Carregar configuração
-echo "<h3>Configuração Carregada:</h3>";
+// Carregar config
 $config = require 'config/config.php';
 
-echo "Host: " . $config['db']['host'] . "<br>";
-echo "Banco: " . $config['db']['dbname'] . "<br>";
-echo "Usuário: " . $config['db']['username'] . "<br>";
-echo "Senha: " . substr($config['db']['password'], 0, 5) . "..." . substr($config['db']['password'], -5) . "<br>";
+echo "<h3>📋 Configuração Atual:</h3>";
+echo "<table border='1' cellpadding='10'>";
+echo "<tr><th>Parâmetro</th><th>Valor</th></tr>";
+echo "<tr><td>Host</td><td>{$config['db']['host']}</td></tr>";
+echo "<tr><td>Banco</td><td>{$config['db']['dbname']}</td></tr>";
+echo "<tr><td>Usuário</td><td>{$config['db']['username']}</td></tr>";
+echo "<tr><td>Senha</td><td>" . str_repeat('*', strlen($config['db']['password'])) . " (" . strlen($config['db']['password']) . " caracteres)</td></tr>";
+echo "<tr><td>Charset</td><td>{$config['db']['charset']}</td></tr>";
+echo "</table><br>";
 
-// Verificar senha
-if ($config['db']['password'] === 'lO5,pcgjc90Atp+GuS(4') {
-    echo "<br>✅ Senha CORRETA no config!<br>";
+// Teste 1: Verificar extensão PDO
+echo "<h3>🔌 Teste 1: Extensão PDO</h3>";
+if (extension_loaded('pdo_mysql')) {
+    echo "✅ PDO MySQL está instalado<br><br>";
 } else {
-    echo "<br>❌ Senha INCORRETA no config!<br>";
-    echo "Esperado: lO5,pcgjc90Atp+GuS(4<br>";
-    echo "Encontrado: " . $config['db']['password'] . "<br>";
+    echo "❌ PDO MySQL NÃO está instalado!<br><br>";
 }
 
-// Testar conexão
-echo "<h3>Teste de Conexão:</h3>";
+// Teste 2: Tentar conexão
+echo "<h3>🔗 Teste 2: Conexão com Banco</h3>";
 try {
+    $dsn = "mysql:host={$config['db']['host']};dbname={$config['db']['dbname']};charset={$config['db']['charset']}";
+    echo "DSN: $dsn<br>";
+    
     $pdo = new PDO(
-        "mysql:host={$config['db']['host']};dbname={$config['db']['dbname']};charset={$config['db']['charset']}",
+        $dsn,
         $config['db']['username'],
-        $config['db']['password']
+        $config['db']['password'],
+        [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
     );
-    echo "✅ <strong>CONEXÃO BEM-SUCEDIDA!</strong><br>";
-    echo "Banco de dados conectado com sucesso!";
+    
+    echo "<br><strong style='color: green;'>✅ CONEXÃO BEM-SUCEDIDA!</strong><br>";
+    
+    // Teste 3: Verificar tabelas
+    echo "<h3>📊 Teste 3: Tabelas no Banco</h3>";
+    $stmt = $pdo->query("SHOW TABLES");
+    $tables = $stmt->fetchAll(PDO::FETCH_COLUMN);
+    
+    if (count($tables) > 0) {
+        echo "✅ Encontradas " . count($tables) . " tabelas:<br>";
+        echo "<ul>";
+        foreach ($tables as $table) {
+            echo "<li>$table</li>";
+        }
+        echo "</ul>";
+    } else {
+        echo "⚠️ Nenhuma tabela encontrada! Você precisa importar o database.sql<br>";
+    }
+    
+    // Teste 4: Verificar usuários
+    echo "<h3>👥 Teste 4: Verificar Usuário no Banco</h3>";
+    $stmt = $pdo->query("SELECT USER()");
+    $currentUser = $stmt->fetchColumn();
+    echo "Usuário conectado: <strong>$currentUser</strong><br>";
+    
 } catch(PDOException $e) {
-    echo "❌ <strong>ERRO DE CONEXÃO:</strong><br>";
-    echo $e->getMessage();
+    echo "<strong style='color: red;'>❌ ERRO DE CONEXÃO:</strong><br>";
+    echo "Código: " . $e->getCode() . "<br>";
+    echo "Mensagem: " . $e->getMessage() . "<br><br>";
+    
+    echo "<h3>🔍 Possíveis Causas:</h3>";
+    echo "<ol>";
+    echo "<li><strong>Usuário não existe:</strong> Verifique se 'u19967126l_dbsgpuser' foi criado no hPanel</li>";
+    echo "<li><strong>Senha incorreta:</strong> Verifique se a senha no config.php está correta</li>";
+    echo "<li><strong>Sem privilégios:</strong> Usuário não foi associado ao banco 'u19967126l_dbsgp'</li>";
+    echo "<li><strong>Banco não existe:</strong> Verifique se o banco 'u19967126l_dbsgp' existe</li>";
+    echo "</ol>";
+    
+    echo "<h3>✅ Solução:</h3>";
+    echo "<p>No hPanel → MySQL Databases:</p>";
+    echo "<ol>";
+    echo "<li>Verifique se o usuário <strong>u19967126l_dbsgpuser</strong> existe</li>";
+    echo "<li>Verifique se o banco <strong>u19967126l_dbsgp</strong> existe</li>";
+    echo "<li>Em 'Add User To Database', associe o usuário ao banco com ALL PRIVILEGES</li>";
+    echo "</ol>";
 }
 
 echo "<hr>";
-echo "<p><strong>⚠️ DELETE este arquivo após o teste!</strong></p>";
+echo "<p><strong>⚠️ DELETE este arquivo após o diagnóstico!</strong></p>";
 ?>
