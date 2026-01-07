@@ -12,7 +12,7 @@ return [
         'host' => 'localhost',
         'dbname' => 'u19967126l_sgpBD',
         'username' => 'u19967126l_SGPBDADMIN',
-        'password' => 'I@nna2111',
+        'password' => 'lO5,pcgjc90Atp+GuS(4',
         'charset' => 'utf8mb4'
     ]
 ];
