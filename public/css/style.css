@@ -1,0 +1,1214 @@
+/* CSS Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --primary: #007bff;
+    --secondary: #6c757d;
+    --success: #28a745;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --bg-color: #f0f2f5;
+    --text-color: #333;
+    --card-bg: #fff;
+    --header-bg: #fff;
+    --border-color: #ddd;
+    --table-header-bg: #f8f9fa;
+    --navbar-bg: #fff;
+    --navbar-text: #333;
+    --border-radius: 8px;
+}
+
+[data-theme="dark"] {
+    --primary: #3788d8;
+    --secondary: #adb5bd;
+    --success: #2ea043;
+    --warning: #d29922;
+    --danger: #ce303b;
+    --bg-color: #0d1117;
+    --text-color: #c9d1d9;
+    --card-bg: #161b22;
+    --header-bg: #161b22;
+    --border-color: #30363d;
+    --table-header-bg: #21262d;
+    --navbar-bg: #161b22;
+    --navbar-text: #c9d1d9;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.login-container {
+    background: var(--card-bg);
+    width: 100%;
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border: 1px solid var(--border-color);
+}
+
+.logo h1 {
+    color: var(--primary);
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.logo p {
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    width: 100%;
+    transition: background 0.2s;
+    text-align: center;
+    color: #fff;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: white;
+}
+
+.btn-secondary {
+    background-color: var(--secondary);
+    color: white;
+}
+
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    width: auto;
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+}
+
+.alert {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+}
+
+.alert.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--navbar-bg);
+    color: var(--navbar-text);
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.nav-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.nav-user {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav-links a,
+.nav-user a {
+    color: var(--navbar-text);
+    text-decoration: none;
+    margin-left: 10px;
+    font-size: 0.9rem;
+}
+
+.btn-logout {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Layout */
+.main-container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Dashboard Header */
+.dashboard-header {
+    background: var(--header-bg);
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+}
+
+.stats-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.card h3 {
+    font-size: 1rem;
+    color: #888;
+    margin-bottom: 0.5rem;
+}
+
+.card p {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.card-blue {
+    border-left: 5px solid var(--primary);
+}
+
+.card-green {
+    border-left: 5px solid var(--secondary);
+}
+
+.card-yellow {
+    border-left: 5px solid var(--warning);
+}
+
+.card-red {
+    border-left: 5px solid var(--danger);
+}
+
+/* Content Grid */
+.content-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    .content-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+.upload-section,
+.list-section {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
+}
+
+.upload-section h3,
+.list-section h3 {
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+    font-size: 1.25rem;
+}
+
+/* Table */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card-bg);
+    color: var(--text-color);
+}
+
+.data-table th,
+.data-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.data-table th {
+    background-color: var(--table-header-bg);
+    font-weight: 600;
+}
+
+.status-badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.status-enviado {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-pendente {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.status-atrasado {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.btn-icon {
+    color: var(--primary);
+    font-size: 1.1rem;
+    margin-right: 0.5rem;
+    text-decoration: none;
+}
+
+.btn-whatsapp {
+    color: #25d366;
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
+/* SEMED Navigation Buttons */
+.semed-nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #ffffff, #f8f9fa);
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    color: #495057;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    white-space: nowrap;
+}
+
+.semed-nav-btn i {
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+}
+
+.semed-nav-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+    border-color: #667eea;
+    background: linear-gradient(135deg, #f8f9fa, #ffffff);
+}
+
+.semed-nav-btn:hover i {
+    transform: scale(1.1);
+}
+
+.semed-nav-btn.active {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border-color: #667eea;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.semed-nav-btn.active i {
+    color: white;
+}
+
+/* Modern Filter Bar */
+.filter-container {
+    background: #ffffff;
+    padding: 1.5rem 2rem;
+    border-radius: 16px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.filter-container:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+}
+
+.filter-group {
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    position: relative;
+}
+
+.filter-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    color: #8898aa;
+    margin-left: 4px;
+}
+
+.filter-select {
+    width: 100%;
+    padding: 0.85rem 1.25rem;
+    border-radius: 10px;
+    border: 1px solid #e9ecef;
+    background-color: #f8f9fa;
+    color: #495057;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236c757d'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1.2rem center;
+    background-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.filter-select:hover {
+    border-color: #dee2e6;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.filter-select:focus {
+    outline: none;
+    border-color: var(--primary);
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.1);
+    transform: translateY(-1px);
+}
+
+.filter-actions {
+    display: flex;
+    gap: 1rem;
+    padding-bottom: 2px;
+}
+
+.btn-filter-clear {
+    background-color: transparent;
+    color: #6c757d;
+    border: 1px solid #dee2e6;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+
+.btn-filter-clear:hover {
+    background-color: #f8f9fa;
+    color: #343a40;
+    border-color: #ced4da;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* School Hero & Stats */
+.school-hero {
+    background: linear-gradient(135deg, #00b09b 0%, #96c93d 100%);
+    /* Green/Teal gradient for School */
+    padding: 40px 30px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 40px rgba(0, 176, 155, 0.3);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.school-hero::after {
+    content: '\f549';
+    /* fa-school */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    right: 20px;
+    bottom: -20px;
+    font-size: 150px;
+    opacity: 0.1;
+    transform: rotate(-15deg);
+}
+
+.school-hero h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.school-hero p {
+    font-size: 1.1rem;
+    opacity: 0.95;
+    margin: 0;
+    max-width: 600px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.stat-icon-wrapper {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    flex-shrink: 0;
+}
+
+.stat-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+    line-height: 1.2;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: #777;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.bg-blue {
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
+    box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+}
+
+.bg-purple {
+    background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+    box-shadow: 0 4px 10px rgba(139, 92, 246, 0.3);
+}
+
+.bg-orange {
+    background: linear-gradient(135deg, #f59e0b, #fbbf24);
+    box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
+}
+
+.bg-red {
+    background: linear-gradient(135deg, #ef4444, #f87171);
+    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
+}
+
+/* Sub-tabs (Pills) */
+.sub-tabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.sub-tab-btn {
+    padding: 10px 24px;
+    border-radius: 50px;
+    border: 2px solid #e0e0e0;
+    background: white;
+    cursor: pointer;
+    font-weight: 600;
+    color: #666;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.sub-tab-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.sub-tab-btn.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+.sub-tab-btn i {
+    font-size: 1rem;
+}
+
+/* ========================================
+   RESPONSIVE FOUNDATION - MOBILE & TABLET
+   ======================================== */
+
+/* Tablet Adjustments (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .main-container {
+        padding: 1.5rem;
+        max-width: 100%;
+    }
+
+    .navbar {
+        padding: 1rem 1.5rem;
+    }
+
+    .stats-cards,
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile Devices (max-width: 768px) */
+@media (max-width: 768px) {
+
+    /* Container & Spacing */
+    .main-container {
+        padding: 1rem;
+        max-width: 100%;
+    }
+
+    .navbar {
+        padding: 0.75rem 1rem;
+        flex-wrap: wrap;
+    }
+
+    /* Typography */
+    .logo h1 {
+        font-size: 1.8rem;
+    }
+
+    .logo p {
+        font-size: 0.9rem;
+    }
+
+    .school-hero h1 {
+        font-size: 1.6rem;
+    }
+
+    .school-hero p {
+        font-size: 0.95rem;
+    }
+
+    /* Cards & Grids */
+    .stats-cards,
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .card {
+        padding: 1rem;
+    }
+
+    .stat-card {
+        padding: 15px;
+    }
+
+    /* Dashboard Header */
+    .dashboard-header {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    /* Upload & List Sections */
+    .upload-section,
+    .list-section {
+        padding: 1rem;
+    }
+
+    .upload-section h3,
+    .list-section h3 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+
+    /* Filter Container */
+    .filter-container {
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .filter-group {
+        min-width: 100%;
+        flex: 1 1 100%;
+    }
+
+    .filter-actions {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .btn-filter-clear {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* School Hero */
+    .school-hero {
+        padding: 25px 20px;
+    }
+
+    .school-hero::after {
+        font-size: 100px;
+        right: 10px;
+        bottom: -10px;
+    }
+
+    /* Sub-tabs */
+    .sub-tabs {
+        gap: 8px;
+    }
+
+    .sub-tab-btn {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+
+    /* Navigation Tabs */
+    .nav-tabs {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 8px !important;
+    }
+
+    .semed-nav-btn {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+        gap: 6px;
+    }
+
+    .semed-nav-btn span {
+        display: none;
+    }
+
+    .semed-nav-btn i {
+        font-size: 1.2rem;
+        margin: 0;
+    }
+}
+
+/* Small Mobile Devices (max-width: 480px) */
+@media (max-width: 480px) {
+    .main-container {
+        padding: 0.75rem;
+    }
+
+    .navbar {
+        padding: 0.5rem 0.75rem;
+    }
+
+    .nav-brand {
+        font-size: 1.2rem;
+    }
+
+    .login-container {
+        margin: 50px auto;
+        padding: 1.5rem;
+    }
+
+    .logo h1 {
+        font-size: 1.5rem;
+    }
+
+    .card p {
+        font-size: 1.5rem;
+    }
+
+    .stat-value {
+        font-size: 1.3rem;
+    }
+
+    .school-hero {
+        padding: 20px 15px;
+    }
+
+    .school-hero h1 {
+        font-size: 1.4rem;
+        gap: 10px;
+    }
+
+    .school-hero::after {
+        font-size: 80px;
+    }
+
+    .btn {
+        padding: 0.65rem 1.25rem;
+        font-size: 0.95rem;
+    }
+
+    .btn-sm {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.8rem;
+    }
+
+    .form-group {
+        margin-bottom: 1.25rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 0.65rem;
+        font-size: 0.95rem;
+    }
+
+    .data-table th,
+    .data-table td {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.85rem;
+    }
+
+    .nav-user {
+        gap: 0.5rem;
+    }
+
+    .nav-user span {
+        font-size: 0.85rem;
+    }
+
+    .d-none.d-md-inline {
+        display: none !important;
+    }
+}
+
+/* ========================================
+   HAMBURGER MENU & MOBILE NAVIGATION
+   ======================================== */
+
+/* Hamburger Menu Button (Hidden on Desktop) */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1000;
+}
+
+.hamburger-menu span {
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-color);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* Hamburger Animation when Active */
+.hamburger-menu.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Mobile Navigation Styles */
+@media (max-width: 768px) {
+
+    /* Show Hamburger Button */
+    .hamburger-menu {
+        display: flex;
+        order: 2;
+    }
+
+    /* Navbar Layout */
+    .navbar {
+        position: relative;
+    }
+
+    .nav-brand {
+        order: 1;
+    }
+
+    .nav-user {
+        order: 3;
+    }
+
+    /* Hide Navigation by Default on Mobile */
+    .nav-tabs {
+        display: none !important;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--navbar-bg);
+        flex-direction: column !important;
+        padding: 1rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-top: 1px solid var(--border-color);
+        z-index: 999;
+        gap: 0.5rem !important;
+    }
+
+    /* Show Navigation when Active */
+    .nav-tabs.active {
+        display: flex !important;
+    }
+
+    /* Mobile Navigation Buttons */
+    .nav-tabs .semed-nav-btn {
+        width: 100%;
+        justify-content: flex-start;
+        padding: 12px 16px;
+    }
+
+    .nav-tabs .semed-nav-btn span {
+        display: inline !important;
+    }
+
+    .nav-tabs .semed-nav-btn i {
+        font-size: 1.1rem;
+        margin-right: 10px;
+    }
+}
+
+/* ========================================
+   PART 5: TOUCH-FRIENDLY FORMS & BUTTONS
+   ======================================== */
+
+@media (max-width: 768px) {
+
+    /* Minimum Touch Target Size (44x44px recommended) */
+    .btn,
+    button,
+    a.semed-nav-btn,
+    a.sub-tab-btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    /* Form Inputs - Larger for Touch */
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        min-height: 44px;
+        font-size: 16px;
+        /* Prevents zoom on iOS */
+    }
+
+    /* Better Spacing Between Form Elements */
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    /* Larger Checkboxes and Radio Buttons */
+    input[type='checkbox'],
+    input[type='radio'] {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+    }
+
+    /* Action Buttons Full Width on Mobile */
+    .btn:not(.btn-sm):not(.btn-icon) {
+        width: 100%;
+        padding: 0.85rem 1.5rem;
+    }
+
+    /* Icon Buttons - Ensure Touch Size */
+    .btn-icon,
+    .btn-sm {
+        min-width: 44px;
+        min-height: 44px;
+        padding: 0.5rem;
+    }
+}
+
+/* ========================================
+   TABLE WRAPPER FOR HORIZONTAL SCROLL
+   ======================================== */
+
+.data-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 1rem;
+}
+
+.data-table-wrapper .data-table {
+    min-width: 600px;
+    /* Forces scroll on small screens */
+}
+
+/* ========================================
+   PART 4: RESPONSIVE TABLES
+   ======================================== */
+
+@media (max-width: 768px) {
+
+    /* Hide table headers */
+    .data-table thead {
+        display: none;
+    }
+
+    /* Make table rows display as cards */
+    .data-table,
+    .data-table tbody,
+    .data-table tr,
+    .data-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .data-table tr {
+        margin-bottom: 1rem;
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius);
+        padding: 1rem;
+        background: var(--card-bg);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .data-table td {
+        padding: 0.75rem 0;
+        border: none;
+        border-bottom: 1px solid var(--border-color);
+        text-align: left;
+        position: relative;
+        padding-left: 50%;
+    }
+
+    .data-table td:last-child {
+        border-bottom: none;
+    }
+
+    /* Add labels before each cell */
+    .data-table td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 45%;
+        padding-right: 10px;
+        font-weight: 600;
+        color: var(--text-color);
+    }
+
+    /* Action buttons in tables */
+    .data-table td .btn-icon,
+    .data-table td .btn-whatsapp {
+        display: inline-flex;
+        margin: 0 0.25rem;
+        min-width: 40px;
+        min-height: 40px;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+
+    /* Even tighter spacing for small screens */
+    .data-table tr {
+        padding: 0.75rem;
+    }
+
+    .data-table td {
+        padding: 0.5rem 0;
+        font-size: 0.9rem;
+    }
+}
+
+/* ========================================
+   FIX: SUB-TABS MOBILE OVERFLOW
+   ======================================== */
+
+@media (max-width: 768px) {
+
+    /* Sub-tabs: Horizontal Scroll instead of Wrap */
+    .sub-tabs {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        gap: 8px !important;
+        padding-bottom: 10px !important;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+    }
+
+    /* Hide scrollbar but keep functionality */
+    .sub-tabs::-webkit-scrollbar {
+        height: 4px;
+    }
+
+    .sub-tabs::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .sub-tabs::-webkit-scrollbar-thumb {
+        background: var(--border-color);
+        border-radius: 4px;
+    }
+
+    /* Sub-tab buttons: prevent shrinking */
+    .sub-tab-btn {
+        flex-shrink: 0 !important;
+        white-space: nowrap !important;
+        padding: 8px 16px !important;
+        font-size: 0.85rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+
+    /* Even smaller on tiny screens */
+    .sub-tab-btn {
+        padding: 6px 12px !important;
+        font-size: 0.8rem !important;
+    }
+}
+
+/* ========================================
+   FIX: TAB-BTN MOBILE SCROLL (COORDINATOR DASHBOARD)
+   ======================================== */
+
+@media (max-width: 768px) {
+
+    /* Main Tabs Container: Horizontal Scroll */
+    .tabs {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        gap: 8px !important;
+        padding-bottom: 10px !important;
+        border-bottom: 2px solid #ddd !important;
+        margin-bottom: 20px !important;
+    }
+
+    /* Hide scrollbar but keep functionality */
+    .tabs::-webkit-scrollbar {
+        height: 4px;
+    }
+
+    .tabs::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .tabs::-webkit-scrollbar-thumb {
+        background: var(--border-color);
+        border-radius: 4px;
+    }
+
+    /* Tab buttons: prevent shrinking and wrapping */
+    .tab-btn {
+        flex-shrink: 0 !important;
+        white-space: nowrap !important;
+        padding: 10px 16px !important;
+        font-size: 0.9rem !important;
+        min-width: auto !important;
+    }
+}
+
+@media (max-width: 480px) {
+
+    /* Even smaller on tiny screens */
+    .tab-btn {
+        padding: 8px 12px !important;
+        font-size: 0.85rem !important;
+    }
+}
