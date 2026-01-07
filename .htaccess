@@ -1,0 +1,11 @@
+# Habilitar RewriteEngine
+RewriteEngine On
+
+# Redirecionar todo tráfego HTTP para HTTPS (recomendado para produção)
+# Descomente as linhas abaixo após configurar SSL
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Redirecionar todas as requisições para a pasta public
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.*)$ /public/$1 [L]

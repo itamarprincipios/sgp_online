@@ -1,0 +1,31 @@
+# Habilitar RewriteEngine
+RewriteEngine On
+
+# Definir a base URL
+RewriteBase /
+
+# Permitir acesso direto a arquivos e diretórios existentes
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Redirecionar todas as requisições para index.php
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+# Configurações de segurança
+<IfModule mod_headers.c>
+    # Prevenir clickjacking
+    Header always set X-Frame-Options "SAMEORIGIN"
+    
+    # Prevenir MIME type sniffing
+    Header always set X-Content-Type-Options "nosniff"
+    
+    # Habilitar XSS Protection
+    Header always set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+# Desabilitar listagem de diretórios
+Options -Indexes
+
+# Configurar página de erro personalizada (opcional)
+# ErrorDocument 404 /404.php
+# ErrorDocument 500 /500.php
