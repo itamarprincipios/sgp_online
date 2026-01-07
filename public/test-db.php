@@ -1,7 +1,7 @@
 <?php
 $dsn = 'mysql:host=localhost;dbname=u199671261_dbsgp;charset=utf8mb4';
 $user = 'u199671261_dbsgpuser';
-$pass = 'Sgp2025App';
+$pass = 'SgpAdmin2025';
 
 $options = [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
