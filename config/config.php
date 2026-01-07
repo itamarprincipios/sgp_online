@@ -9,7 +9,7 @@ return [
         'debug' => false,
     ],
     'db' => [
-        'host' => 'localhost',
+        'host' => '127.0.0.1',
         'dbname' => 'u19967126l_dbsgp',
         'username' => 'u19967126l_dbsgpuser',
         'password' => 'Sgp2025Admin',
