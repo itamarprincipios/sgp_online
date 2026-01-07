@@ -18,16 +18,16 @@ if (file_exists(__DIR__ . '/../.env')) {
 return [
     'app' => [
         'name' => $_ENV['APP_NAME'] ?? 'SGP - Sistema de Gestão Pedagógica',
-        'url' => $_ENV['APP_URL'] ?? 'http://localhost:8000',
+        'url' => $_ENV['APP_URL'] ?? 'https://sgprorainopolis.com',
         'timezone' => $_ENV['APP_TIMEZONE'] ?? 'America/Sao_Paulo',
-        'env' => $_ENV['APP_ENV'] ?? 'development',
-        'debug' => filter_var($_ENV['APP_DEBUG'] ?? 'true', FILTER_VALIDATE_BOOLEAN),
+        'env' => $_ENV['APP_ENV'] ?? 'production',
+        'debug' => filter_var($_ENV['APP_DEBUG'] ?? 'false', FILTER_VALIDATE_BOOLEAN),
     ],
     'db' => [
         'host' => $_ENV['DB_HOST'] ?? 'localhost',
-        'dbname' => $_ENV['DB_NAME'] ?? 'sgp_system',
-        'username' => $_ENV['DB_USER'] ?? 'root',
-        'password' => $_ENV['DB_PASS'] ?? '',
+        'dbname' => $_ENV['DB_NAME'] ?? 'u19967126l_sgpBD',
+        'username' => $_ENV['DB_USER'] ?? 'u19967126l_SGPBDADMIN',
+        'password' => $_ENV['DB_PASS'] ?? 'I@nna2111',
         'charset' => $_ENV['DB_CHARSET'] ?? 'utf8mb4'
     ]
 ];
