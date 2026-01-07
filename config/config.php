@@ -9,10 +9,10 @@ return [
         'debug' => false,
     ],
     'db' => [
-        'host' => '127.0.0.1',
-        'dbname' => 'u19967126l_dbsgp',
-        'username' => 'u19967126l_dbsgpuser',
-        'password' => 'Sgp2025Admin',
+        'host' => 'localhost',
+        'dbname' => 'u199671261_dbsgp',
+        'username' => 'u199671261_dbsgpuser',
+        'password' => 'Sgp2025App',
         'charset' => 'utf8mb4'
     ]
 ];
