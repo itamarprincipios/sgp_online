@@ -1,9 +1,32 @@
 <?php
 
 function url($path = '') {
-    $config = require __DIR__ . '/../../config/config.php';
-    return rtrim($config['app']['url'], '/') . '/' . ltrim($path, '/');
+    // Detectar o diretório base automaticamente
+    $scriptName = $_SERVER['SCRIPT_NAME'];
+    $baseDir = str_replace('\\', '/', dirname($scriptName));
+    
+    // Se estiver na pasta public, remover /public do base
+    if (basename($baseDir) === 'public') {
+        $baseDir = dirname($baseDir);
+    }
+    
+    // Garantir que baseDir termine sem barra
+    $baseDir = rtrim($baseDir, '/');
+    
+    // Se o path for vazio, retornar apenas o baseDir
+    if (empty($path)) {
+        return $baseDir ?: '/';
+    }
+    
+    // Para assets (css, js, img), adicionar /public/
+    if (preg_match('/\.(css|js|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf)$/i', $path)) {
+        return $baseDir . '/public/' . ltrim($path, '/');
+    }
+    
+    // Para rotas normais
+    return $baseDir . '/' . ltrim($path, '/');
 }
+
 
 function redirect($path) {
     header("Location: " . url($path));
