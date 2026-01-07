@@ -12,7 +12,7 @@ return [
         'host' => 'localhost',
         'dbname' => 'u19967126l_dbsgp',
         'username' => 'u19967126l_dbsgpuser',
-        'password' => '8v*HaqUGQv',
+        'password' => 'Sgp2025Admin',
         'charset' => 'utf8mb4'
     ]
 ];
